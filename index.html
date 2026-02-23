@@ -184,7 +184,7 @@
     .label .s{ margin-top:1px; font-size:8px; line-height:1.1; color: var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .label.hide{ display:none; }
 
-    /* About modal */
+    /* Modal base */
     .modalWrap{
       position:absolute;
       inset:0;
@@ -318,6 +318,91 @@
       font-family: var(--mono);
       font-size: 11px;
     }
+
+    /* Contact form */
+    .formGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .field{ display:flex; flex-direction:column; gap: 6px; }
+    .field label{
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(226,232,240,.86);
+      letter-spacing: .2px;
+    }
+    .input, .textarea{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+      color: rgba(226,232,240,.92);
+      border-radius: 12px;
+      padding: 10px 10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      outline: none;
+      transition: border-color .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+    .textarea{ min-height: 132px; resize: vertical; font-family: var(--sans); font-size: 13px; line-height: 1.45; }
+    .input:focus, .textarea:focus{
+      box-shadow: 0 0 0 4px rgba(59,130,246,.14);
+      border-color: rgba(59,130,246,.35);
+      background: rgba(0,0,0,.42);
+    }
+    .formActions{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .hint{
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .primaryBtn{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(59,130,246,.16);
+      color: rgba(226,232,240,.94);
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      user-select:none;
+    }
+    .primaryBtn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(59,130,246,.22);
+    }
+    .primaryBtn:active{ transform: translateY(0px); }
+    .primaryBtn[disabled]{
+      opacity: .55;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+    .statusPill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.30);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(226,232,240,.90);
+    }
+    .statusPill.ok{ color: rgba(187,247,208,.92); border-color: rgba(34,197,94,.22); background: rgba(34,197,94,.10); }
+    .statusPill.err{ color: rgba(254,202,202,.92); border-color: rgba(239,68,68,.22); background: rgba(239,68,68,.10); }
+
+    @media (max-width: 720px){
+      .formGrid{ grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -332,8 +417,10 @@
 
     <div class="menu" aria-label="Menu">
       <button class="menuBtn" id="aboutBtn" type="button">About</button>
+      <button class="menuBtn" id="contactBtn" type="button">Contact</button>
     </div>
 
+    <!-- ABOUT MODAL -->
     <div class="modalWrap" id="aboutModal" aria-hidden="true">
       <div class="backdrop" id="aboutBackdrop"></div>
       <div class="modal" role="dialog" aria-modal="true" aria-label="About Degla">
@@ -376,6 +463,62 @@ Join the shift from human-controlled drones to software-controlled fleets.
       </div>
     </div>
 
+    <!-- CONTACT MODAL -->
+    <div class="modalWrap" id="contactModal" aria-hidden="true">
+      <div class="backdrop" id="contactBackdrop"></div>
+      <div class="modal" role="dialog" aria-modal="true" aria-label="Contact Degla">
+        <div class="modalHeader">
+          <div class="modalTitle">
+            <div class="icon">@</div>
+            <div class="txt">
+              <div class="t">Contact Degla</div>
+              <div class="s">Send a message to the team</div>
+            </div>
+          </div>
+          <button class="closeBtn" id="contactClose" type="button">Close</button>
+        </div>
+
+        <div class="modalBody">
+          <div class="aboutCard">
+            <div class="kicker">DEGLA / CONTACT</div>
+
+            <form id="contactForm" novalidate>
+              <div class="formGrid">
+                <div class="field">
+                  <label for="cEmail">Your email</label>
+                  <input class="input" id="cEmail" name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
+                </div>
+                <div class="field">
+                  <label for="cSubject">Subject</label>
+                  <input class="input" id="cSubject" name="subject" type="text" placeholder="Pilot request / Demo / Partnership…" required />
+                </div>
+              </div>
+
+              <div class="field" style="margin-top:10px;">
+                <label for="cMessage">Message</label>
+                <textarea class="textarea" id="cMessage" name="message" placeholder="Write your message…" required></textarea>
+              </div>
+
+              <div class="formActions">
+                <div class="hint" id="contactHint">
+                  No backend configured → we’ll open your email client on send.
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <span class="statusPill" id="contactStatus" style="display:none;"></span>
+                  <button class="primaryBtn" id="sendBtn" type="submit">Send message</button>
+                </div>
+              </div>
+            </form>
+
+            <div class="aboutFooter">
+              <span>Press ESC to close</span>
+              <span>degla.ai</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="stage" id="stage" aria-label="Degla landing message">
       <div class="line line1" aria-live="polite">
         <span id="typed1"></span><span class="caret" id="caret1" aria-hidden="true">|</span>
@@ -404,29 +547,66 @@ Join the shift from human-controlled drones to software-controlled fleets.
   const canvas = $("gl");
   const warnOverlay = $("warnOverlay");
 
+  // =========================
+  // Config: contact handling
+  // =========================
+  // If you want the form to REALLY send without opening mail client,
+  // set CONTACT_ENDPOINT to your API (or a form service endpoint).
+  // Example: "https://formspree.io/f/xxxxxxx"
+  const CONTACT_TO_EMAIL = "contact@degla.ai"; // change if needed
+  const CONTACT_ENDPOINT = ""; // <-- optional: set to your endpoint to POST
+
   // About modal controls
   const aboutBtn = $("aboutBtn");
   const aboutModal = $("aboutModal");
   const aboutBackdrop = $("aboutBackdrop");
   const aboutClose = $("aboutClose");
 
-  function openAbout() {
-    if (!aboutModal) return;
-    aboutModal.classList.add("open");
-    aboutModal.setAttribute("aria-hidden", "false");
+  // Contact modal controls
+  const contactBtn = $("contactBtn");
+  const contactModal = $("contactModal");
+  const contactBackdrop = $("contactBackdrop");
+  const contactClose = $("contactClose");
+
+  const contactForm = $("contactForm");
+  const contactHint = $("contactHint");
+  const contactStatus = $("contactStatus");
+  const sendBtn = $("sendBtn");
+  const cEmail = $("cEmail");
+  const cSubject = $("cSubject");
+  const cMessage = $("cMessage");
+
+  function openModal(modalEl){
+    if (!modalEl) return;
+    modalEl.classList.add("open");
+    modalEl.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
   }
-  function closeAbout() {
-    if (!aboutModal) return;
-    aboutModal.classList.remove("open");
-    aboutModal.setAttribute("aria-hidden", "true");
+  function closeModal(modalEl){
+    if (!modalEl) return;
+    modalEl.classList.remove("open");
+    modalEl.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "hidden";
   }
+
+  function openAbout(){ openModal(aboutModal); }
+  function closeAbout(){ closeModal(aboutModal); }
+  function openContact(){ openModal(contactModal); }
+  function closeContact(){ closeModal(contactModal); }
+
   aboutBtn && aboutBtn.addEventListener("click", openAbout);
   aboutClose && aboutClose.addEventListener("click", closeAbout);
   aboutBackdrop && aboutBackdrop.addEventListener("click", closeAbout);
+
+  contactBtn && contactBtn.addEventListener("click", openContact);
+  contactClose && contactClose.addEventListener("click", closeContact);
+  contactBackdrop && contactBackdrop.addEventListener("click", closeContact);
+
   window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && aboutModal && aboutModal.classList.contains("open")) closeAbout();
+    if (e.key === "Escape") {
+      if (aboutModal && aboutModal.classList.contains("open")) closeAbout();
+      if (contactModal && contactModal.classList.contains("open")) closeContact();
+    }
   });
 
   function showWarn(msg) {
@@ -484,6 +664,107 @@ Join the shift from human-controlled drones to software-controlled fleets.
       });
     }, 180);
   }
+
+  // Contact form behavior
+  function setStatus(kind, msg){
+    if (!contactStatus) return;
+    contactStatus.style.display = "";
+    contactStatus.className = "statusPill " + (kind || "");
+    contactStatus.textContent = msg;
+  }
+  function clearStatus(){
+    if (!contactStatus) return;
+    contactStatus.style.display = "none";
+    contactStatus.textContent = "";
+    contactStatus.className = "statusPill";
+  }
+  function isValidEmail(v){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || "").trim());
+  }
+  function encodeMailto(s){
+    return encodeURIComponent(String(s || "").replace(/\r?\n/g, "\n"));
+  }
+
+  if (contactHint) {
+    contactHint.textContent = CONTACT_ENDPOINT
+      ? "Form endpoint configured → message will be sent in-page."
+      : "No backend configured → we’ll open your email client on send.";
+  }
+
+  contactForm && contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearStatus();
+
+    const email = (cEmail?.value || "").trim();
+    const subject = (cSubject?.value || "").trim();
+    const message = (cMessage?.value || "").trim();
+
+    // Ruthless validation: no empty junk.
+    if (!email || !isValidEmail(email)) {
+      setStatus("err", "Enter a valid email.");
+      cEmail && cEmail.focus();
+      return;
+    }
+    if (!subject) {
+      setStatus("err", "Subject is required.");
+      cSubject && cSubject.focus();
+      return;
+    }
+    if (!message || message.length < 10) {
+      setStatus("err", "Message is too short.");
+      cMessage && cMessage.focus();
+      return;
+    }
+
+    // Disable while sending
+    if (sendBtn) sendBtn.disabled = true;
+
+    try {
+      if (CONTACT_ENDPOINT) {
+        setStatus("", "Sending…");
+        const res = await fetch(CONTACT_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            subject,
+            message,
+            meta: { source: "degla-3d-sim", ts: Date.now() }
+          })
+        });
+
+        if (!res.ok) {
+          throw new Error("Request failed");
+        }
+
+        setStatus("ok", "Sent. We’ll reply soon.");
+        contactForm.reset();
+      } else {
+        // Mailto fallback
+        const fullBody =
+          `From: ${email}\n\n` +
+          `${message}\n\n` +
+          `—\nSent from degla.ai demo`;
+
+        const mailto =
+          `mailto:${encodeURIComponent(CONTACT_TO_EMAIL)}` +
+          `?subject=${encodeMailto(subject)}` +
+          `&body=${encodeMailto(fullBody)}`;
+
+        setStatus("ok", "Opening email client…");
+        window.location.href = mailto;
+
+        // Don't reset immediately (some browsers block)
+        window.setTimeout(() => {
+          try { contactForm.reset(); } catch (_) {}
+        }, 400);
+      }
+    } catch (err) {
+      setStatus("err", "Could not send. Try again or email us directly.");
+    } finally {
+      if (sendBtn) sendBtn.disabled = false;
+    }
+  });
 
   function start() {
     if (!window.THREE) { showWarn("Three.js is not available."); return; }
