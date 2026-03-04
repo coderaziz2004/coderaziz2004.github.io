@@ -32,6 +32,23 @@
     .viewport{ position:relative; height:100%; background: rgba(0,0,0,.22); overflow:hidden; }
     #gl{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 
+    /* Top-left image */
+    .cornerBadge{
+      position:absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 9;
+      width: 190px;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      box-shadow: 0 16px 45px rgba(0,0,0,.45);
+      backdrop-filter: blur(10px);
+      pointer-events: none;
+      opacity: .95;
+    }
+
     .topPill{
       position:absolute;
       top: 18px;
@@ -166,12 +183,12 @@
       pointer-events:none;
     }
 
-    /* Labels (unchanged) */
+    /* Labels */
     .labels{ position:absolute; inset:0; z-index:4; pointer-events:none; }
     .label{
       position:absolute;
       transform: translate(-50%, calc(-100% - 16px));
-      max-width: 150px;
+      max-width: 170px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.45);
       border-radius: 10px;
@@ -185,20 +202,9 @@
     .label.hide{ display:none; }
 
     /* Modal base */
-    .modalWrap{
-      position:absolute;
-      inset:0;
-      z-index: 20;
-      display:none;
-      pointer-events:auto;
-    }
+    .modalWrap{ position:absolute; inset:0; z-index: 20; display:none; pointer-events:auto; }
     .modalWrap.open{ display:block; }
-    .backdrop{
-      position:absolute;
-      inset:0;
-      background: rgba(0,0,0,.55);
-      backdrop-filter: blur(10px);
-    }
+    .backdrop{ position:absolute; inset:0; background: rgba(0,0,0,.55); backdrop-filter: blur(10px); }
     .modal{
       position:absolute;
       left: 50%;
@@ -225,45 +231,26 @@
       background: linear-gradient(180deg, rgba(0,0,0,.75), rgba(0,0,0,.35));
       backdrop-filter: blur(10px);
     }
-    .modalTitle{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      min-width: 0;
-    }
+    .modalTitle{ display:flex; align-items:center; gap: 10px; min-width: 0; }
     .modalTitle .icon{
-      width: 30px;
-      height: 30px;
+      width: 30px; height: 30px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family: var(--mono);
-      font-size: 12px;
-      color:#cbd5e1;
-      flex: 0 0 auto;
+      display:flex; align-items:center; justify-content:center;
+      font-family: var(--mono); font-size: 12px; color:#cbd5e1; flex: 0 0 auto;
     }
     .modalTitle .txt{ min-width:0; }
     .modalTitle .txt .t{
-      font-size: 12px;
-      font-weight: 650;
-      letter-spacing: .2px;
+      font-size: 12px; font-weight: 650; letter-spacing: .2px;
       color: rgba(226,232,240,.94);
       font-family: var(--mono);
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap; overflow:hidden; text-overflow: ellipsis;
     }
     .modalTitle .txt .s{
-      margin-top: 2px;
-      font-size: 11px;
-      color: var(--muted);
+      margin-top: 2px; font-size: 11px; color: var(--muted);
       font-family: var(--mono);
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap; overflow:hidden; text-overflow: ellipsis;
     }
     .closeBtn{
       border: 1px solid rgba(255,255,255,.12);
@@ -277,61 +264,20 @@
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
       user-select:none;
     }
-    .closeBtn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.16);
-      background: rgba(255,255,255,.08);
-    }
+    .closeBtn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.08); }
     .closeBtn:active{ transform: translateY(0px); }
 
     .modalBody{ padding: 14px; display:flex; flex-direction:column; gap: 12px; }
-    .aboutCard{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      border-radius: 16px;
-      padding: 14px 14px 12px;
-    }
-    .aboutCard .kicker{
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: .2px;
-      margin-bottom: 10px;
-    }
-    .aboutText{
-      margin:0;
-      font-size: 14px;
-      line-height: 1.55;
-      color: rgba(226,232,240,.92);
-      letter-spacing: -.01em;
-      white-space: pre-wrap;
-      text-wrap: pretty;
-    }
+    .aboutCard{ border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); border-radius: 16px; padding: 14px 14px 12px; }
+    .aboutCard .kicker{ font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .2px; margin-bottom: 10px; }
+    .aboutText{ margin:0; font-size: 14px; line-height: 1.55; color: rgba(226,232,240,.92); letter-spacing: -.01em; white-space: pre-wrap; text-wrap: pretty; }
     .aboutText strong{ font-weight: 700; color: rgba(226,232,240,.96); }
-    .aboutFooter{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      padding-top: 2px;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 11px;
-    }
+    .aboutFooter{ display:flex; align-items:center; justify-content:space-between; gap: 10px; padding-top: 2px; color: var(--muted); font-family: var(--mono); font-size: 11px; }
 
     /* Contact form */
-    .formGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+    .formGrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .field{ display:flex; flex-direction:column; gap: 6px; }
-    .field label{
-      font-family: var(--mono);
-      font-size: 11px;
-      color: rgba(226,232,240,.86);
-      letter-spacing: .2px;
-    }
+    .field label{ font-family: var(--mono); font-size: 11px; color: rgba(226,232,240,.86); letter-spacing: .2px; }
     .input, .textarea{
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.35);
@@ -349,19 +295,8 @@
       border-color: rgba(59,130,246,.35);
       background: rgba(0,0,0,.42);
     }
-    .formActions{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .hint{
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.35;
-    }
+    .formActions{ display:flex; align-items:center; justify-content:space-between; gap: 10px; margin-top: 8px; }
+    .hint{ font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.35; }
     .primaryBtn{
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(59,130,246,.16);
@@ -374,17 +309,9 @@
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
       user-select:none;
     }
-    .primaryBtn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(59,130,246,.22);
-    }
+    .primaryBtn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18); background: rgba(59,130,246,.22); }
     .primaryBtn:active{ transform: translateY(0px); }
-    .primaryBtn[disabled]{
-      opacity: .55;
-      cursor: not-allowed;
-      transform: none !important;
-    }
+    .primaryBtn[disabled]{ opacity: .55; cursor: not-allowed; transform: none !important; }
     .statusPill{
       display:inline-flex;
       align-items:center;
@@ -402,6 +329,7 @@
 
     @media (max-width: 720px){
       .formGrid{ grid-template-columns: 1fr; }
+      .cornerBadge{ width: 150px; }
     }
   </style>
 </head>
@@ -409,6 +337,12 @@
 <div id="app">
   <main class="viewport" aria-label="3D mission viewport">
     <canvas id="gl"></canvas>
+
+    <img
+      class="cornerBadge"
+      alt="Degla badge"
+      src="https://framerusercontent.com/images/3hWexDAHXzayoFa4gxLgPVIPlM.webp?width=1432&height=912"
+    />
 
     <div class="topPill" aria-label="Degla">
       <span class="mark">D</span>
@@ -442,7 +376,7 @@ Degla is the Cursor for mission planning.
 
 Today, drone operations scale linearly with labor: more drones means more pilots, more planners.
 
-Degla breaks that constraint. One operator describes intent in natural language: "inspect this area, spray these fields, flag stress" and Degla turns it into a coordinated mission across dozens (or hundreds) of drones.
+Degla breaks that constraint. One operator describes intent in natural language: "search this area, detect survivors, guide responders" and Degla turns it into a coordinated mission across dozens (or hundreds) of drones.
 
 Degla is built around a simple idea: once you’ve expressed your intent, the system owns the problem.
 
@@ -531,10 +465,10 @@ Join the shift from human-controlled drones to software-controlled fleets.
     <div class="warnOverlay" id="warnOverlay"></div>
 
     <div class="labels" id="labels">
-      <div class="label" id="l1"><div class="t">Drone 1 • Spraying</div><div class="s" id="s1">Executing</div></div>
-      <div class="label" id="l2"><div class="t">Drone 2 • Taking Photos</div><div class="s" id="s2">Capturing photo</div></div>
-      <div class="label" id="l3"><div class="t">Drone 3 • Inspecting</div><div class="s" id="s3">Executing</div></div>
-      <div class="label" id="l4"><div class="t">Drone 4 • Crop Scan</div><div class="s" id="s4">Executing</div></div>
+      <div class="label" id="l1"><div class="t">Drone 1 • Grid Search</div><div class="s" id="s1">Searching</div></div>
+      <div class="label" id="l2"><div class="t">Drone 2 • Thermal Spotter</div><div class="s" id="s2">Scanning</div></div>
+      <div class="label" id="l3"><div class="t">Drone 3 • Recon / Mapping</div><div class="s" id="s3">Mapping</div></div>
+      <div class="label" id="l4"><div class="t">Drone 4 • Confirm / Approach</div><div class="s" id="s4">Verifying</div></div>
     </div>
   </main>
 </div>
@@ -550,9 +484,6 @@ Join the shift from human-controlled drones to software-controlled fleets.
   // =========================
   // Config: contact handling
   // =========================
-  // If you want the form to REALLY send without opening mail client,
-  // set CONTACT_ENDPOINT to your API (or a form service endpoint).
-  // Example: "https://formspree.io/f/xxxxxxx"
   const CONTACT_TO_EMAIL = "ceo@degla.ai"; // change if needed
   const CONTACT_ENDPOINT = ""; // <-- optional: set to your endpoint to POST
 
@@ -626,12 +557,12 @@ Join the shift from human-controlled drones to software-controlled fleets.
 
   const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Typewriter overlay
+  // Typewriter overlay (SAR)
   const stageEl = $("stage");
   const typed1 = $("typed1");
   const typed2 = $("typed2");
-  const line1 = "Degla is the Cursor for mission planning.";
-  const line2 = "We turn natural language into resilient, multi-drone mission execution.";
+  const line1 = "Degla turns natural language into multi-drone mission execution for Search & Rescue.";
+//  const line2 = "Multi-drone coverage, survivor detection, resilient execution.";
   function setText(el, text) { if (el) el.textContent = text; }
   function typeLine(el, line, speedBase, speedJitter, punctPause, done) {
     let i = 0;
@@ -699,24 +630,10 @@ Join the shift from human-controlled drones to software-controlled fleets.
     const subject = (cSubject?.value || "").trim();
     const message = (cMessage?.value || "").trim();
 
-    // Ruthless validation: no empty junk.
-    if (!email || !isValidEmail(email)) {
-      setStatus("err", "Enter a valid email.");
-      cEmail && cEmail.focus();
-      return;
-    }
-    if (!subject) {
-      setStatus("err", "Subject is required.");
-      cSubject && cSubject.focus();
-      return;
-    }
-    if (!message || message.length < 10) {
-      setStatus("err", "Message is too short.");
-      cMessage && cMessage.focus();
-      return;
-    }
+    if (!email || !isValidEmail(email)) { setStatus("err", "Enter a valid email."); cEmail && cEmail.focus(); return; }
+    if (!subject) { setStatus("err", "Subject is required."); cSubject && cSubject.focus(); return; }
+    if (!message || message.length < 10) { setStatus("err", "Message is too short."); cMessage && cMessage.focus(); return; }
 
-    // Disable while sending
     if (sendBtn) sendBtn.disabled = true;
 
     try {
@@ -725,39 +642,20 @@ Join the shift from human-controlled drones to software-controlled fleets.
         const res = await fetch(CONTACT_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email,
-            subject,
-            message,
-            meta: { source: "degla-3d-sim", ts: Date.now() }
-          })
+          body: JSON.stringify({ email, subject, message, meta: { source: "degla-3d-sim", ts: Date.now() } })
         });
-
-        if (!res.ok) {
-          throw new Error("Request failed");
-        }
-
+        if (!res.ok) throw new Error("Request failed");
         setStatus("ok", "Sent. We’ll reply soon.");
         contactForm.reset();
       } else {
-        // Mailto fallback
-        const fullBody =
-          `From: ${email}\n\n` +
-          `${message}\n\n` +
-          `—\nSent from degla.ai demo`;
-
+        const fullBody = `From: ${email}\n\n${message}\n\n—\nSent from degla.ai demo`;
         const mailto =
           `mailto:${encodeURIComponent(CONTACT_TO_EMAIL)}` +
           `?subject=${encodeMailto(subject)}` +
           `&body=${encodeMailto(fullBody)}`;
-
         setStatus("ok", "Opening email client…");
         window.location.href = mailto;
-
-        // Don't reset immediately (some browsers block)
-        window.setTimeout(() => {
-          try { contactForm.reset(); } catch (_) {}
-        }, 400);
+        window.setTimeout(() => { try { contactForm.reset(); } catch (_) {} }, 400);
       }
     } catch (err) {
       setStatus("err", "Could not send. Try again or email us directly.");
@@ -782,119 +680,279 @@ Join the shift from human-controlled drones to software-controlled fleets.
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x05070b, 120, 320);
+    scene.fog = new THREE.Fog(0x05070b, 160, 520);
 
-    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
-    camera.position.set(0, 140, 150);
-    camera.lookAt(0, 0, 10);
+    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1400);
+    camera.position.set(0, 175, 210);
+    camera.lookAt(0, 0, 0);
 
-    const hemi = new THREE.HemisphereLight(0xdbeafe, 0x07140e, 0.60);
+    const hemi = new THREE.HemisphereLight(0xdbeafe, 0x07140e, 0.56);
     scene.add(hemi);
-    const dir = new THREE.DirectionalLight(0xffffff, 0.95);
-    dir.position.set(70, 120, 40);
+    const dir = new THREE.DirectionalLight(0xffffff, 0.88);
+    dir.position.set(95, 150, 65);
     dir.castShadow = true;
     dir.shadow.mapSize.set(1024, 1024);
     dir.shadow.camera.near = 10;
-    dir.shadow.camera.far = 360;
-    dir.shadow.camera.left = -140;
-    dir.shadow.camera.right = 140;
-    dir.shadow.camera.top = 140;
-    dir.shadow.camera.bottom = -140;
+    dir.shadow.camera.far = 650;
+    dir.shadow.camera.left = -240;
+    dir.shadow.camera.right = 240;
+    dir.shadow.camera.top = 240;
+    dir.shadow.camera.bottom = -240;
     scene.add(dir);
 
-    function makeTerrainTexture() {
+    // =========================
+    // DISASTER CITY (roads + blocks + rubble)
+    // =========================
+    function makeAsphaltTexture() {
       const c = document.createElement("canvas");
       c.width = 512; c.height = 512;
       const g = c.getContext("2d");
-      g.fillStyle = "#0b2a18";
+
+      g.fillStyle = "#0e1218";
       g.fillRect(0,0,c.width,c.height);
-      for (let i = 0; i < 11000; i++) {
+
+      // grit
+      for (let i = 0; i < 17000; i++) {
         const x = Math.random() * c.width;
         const y = Math.random() * c.height;
-        const a = Math.random() * 0.06;
+        const a = Math.random() * 0.10;
         g.fillStyle = `rgba(255,255,255,${a})`;
         g.fillRect(x,y,1,1);
       }
-      g.globalAlpha = 0.20;
-      g.strokeStyle = "rgba(0,0,0,0.25)";
-      for (let y = 0; y < c.height; y += 22) {
+
+      // cracks
+      g.globalAlpha = 0.22;
+      g.strokeStyle = "rgba(0,0,0,0.55)";
+      for (let i=0;i<90;i++){
+        const x0 = Math.random()*c.width, y0 = Math.random()*c.height;
         g.beginPath();
-        g.moveTo(0, y + (Math.sin(y/28) * 4));
-        g.lineTo(c.width, y);
+        g.moveTo(x0,y0);
+        for (let k=0;k<5;k++){
+          const dx = (Math.random()*2-1) * 60;
+          const dy = (Math.random()*2-1) * 60;
+          g.lineTo(x0+dx, y0+dy);
+        }
         g.stroke();
       }
       g.globalAlpha = 1;
+
       const tex = new THREE.CanvasTexture(c);
       tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-      tex.repeat.set(1.5, 1.5);
+      tex.repeat.set(2.0, 2.0);
       tex.anisotropy = 8;
       return tex;
     }
 
-    const terrainTex = makeTerrainTexture();
+    const asphaltTex = makeAsphaltTexture();
+
+    // Map bounds (tight)
+    const ZONE = { x0:-120, x1:120, z0:-85, z1:85 };
+
+    // Base ground
     const ground = new THREE.Mesh(
-      new THREE.PlaneGeometry(260, 190, 1, 1),
-      new THREE.MeshStandardMaterial({ map: terrainTex, roughness: 1.0, metalness: 0.0, color: 0x0d3a22 })
+      new THREE.PlaneGeometry(320, 240, 1, 1),
+      new THREE.MeshStandardMaterial({ map: asphaltTex, roughness: 1.0, metalness: 0.0, color: 0x141a23 })
     );
     ground.rotation.x = -Math.PI / 2;
     ground.receiveShadow = true;
     scene.add(ground);
 
-    const FIELDS = {
-      A: { x0: -110, x1: -40, z0: -55, z1: 5, color: 0x134a2a },
-      B: { x0: -40, x1: 30, z0: -55, z1: 5, color: 0x14522e },
-      C: { x0: 30, x1: 110, z0: -55, z1: 5, color: 0x154f2c },
-      D: { xL: -40, xR: 110, zTop: 10, zBot: 70 }
-    };
+    // Roads grid
+    function addRoads(){
+      const roads = new THREE.Group();
 
-    function fieldMat(hex) {
-      return new THREE.MeshStandardMaterial({ color: hex, roughness: 1.0, metalness: 0.0, transparent: true, opacity: 0.90 });
+      const roadMat = new THREE.MeshStandardMaterial({
+        color: 0x0c1016,
+        roughness: 1.0,
+        metalness: 0.0,
+        transparent: true,
+        opacity: 0.95
+      });
+
+      const lineMat = new THREE.LineBasicMaterial({ color: 0xcbd5e1, transparent:true, opacity: 0.12 });
+
+      const roadW = 18;
+
+      const road1 = new THREE.Mesh(new THREE.PlaneGeometry(300, roadW), roadMat);
+      road1.rotation.x = -Math.PI/2;
+      road1.position.set(0, 0.03, 0);
+      roads.add(road1);
+
+      const road2 = new THREE.Mesh(new THREE.PlaneGeometry(roadW, 220), roadMat);
+      road2.rotation.x = -Math.PI/2;
+      road2.position.set(0, 0.035, 0);
+      roads.add(road2);
+
+      function dashedLineZ(z, x0, x1, step=10, dash=5){
+        const pts = [];
+        for (let x=x0; x<=x1; x+=step){
+          pts.push(new THREE.Vector3(x,0.06,z));
+          pts.push(new THREE.Vector3(Math.min(x+dash,x1),0.06,z));
+        }
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        return new THREE.LineSegments(geo, lineMat);
+      }
+      roads.add(dashedLineZ(  3.0, -140, 140));
+      roads.add(dashedLineZ( -3.0, -140, 140));
+
+      function dashedLineX(x, z0, z1, step=10, dash=5){
+        const pts = [];
+        for (let z=z0; z<=z1; z+=step){
+          pts.push(new THREE.Vector3(x,0.06,z));
+          pts.push(new THREE.Vector3(x,0.06,Math.min(z+dash,z1)));
+        }
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        return new THREE.LineSegments(geo, lineMat);
+      }
+      roads.add(dashedLineX( 3.0, -110, 110));
+      roads.add(dashedLineX(-3.0, -110, 110));
+
+      scene.add(roads);
+      return roads;
     }
-    function addFieldRect(f) {
-      const w = f.x1 - f.x0;
-      const h = f.z1 - f.z0;
-      const mesh = new THREE.Mesh(new THREE.PlaneGeometry(w, h), fieldMat(f.color));
-      mesh.rotation.x = -Math.PI/2;
-      mesh.position.set((f.x0 + f.x1)/2, 0.02, (f.z0 + f.z1)/2);
-      mesh.receiveShadow = true;
-      scene.add(mesh);
+    addRoads();
 
-      const edges = new THREE.LineSegments(
-        new THREE.EdgesGeometry(new THREE.PlaneGeometry(w, h)),
-        new THREE.LineBasicMaterial({ color: 0xcbd5e1, transparent:true, opacity: 0.22 })
-      );
-      edges.rotation.x = -Math.PI/2;
-      edges.position.copy(mesh.position);
-      scene.add(edges);
+    // City blocks / damaged buildings
+    function addCityBlocks(){
+      const g = new THREE.Group();
+      const matA = new THREE.MeshStandardMaterial({ color: 0x242a35, roughness: 1.0, metalness: 0.02 });
+      const matB = new THREE.MeshStandardMaterial({ color: 0x1f2530, roughness: 1.0, metalness: 0.03 });
+
+      const blocks = [];
+      const edgeBands = [
+        { x0: ZONE.x0+10, x1: ZONE.x0+55, z0: ZONE.z0+10, z1: ZONE.z1-10 },
+        { x0: ZONE.x1-55, x1: ZONE.x1-10, z0: ZONE.z0+10, z1: ZONE.z1-10 },
+        { x0: ZONE.x0+60, x1: ZONE.x1-60, z0: ZONE.z0+10, z1: ZONE.z0+45 },
+        { x0: ZONE.x0+60, x1: ZONE.x1-60, z0: ZONE.z1-45, z1: ZONE.z1-10 },
+      ];
+
+      for (const band of edgeBands){
+        const n = 14;
+        for (let i=0;i<n;i++){
+          const x = band.x0 + Math.random()*(band.x1-band.x0);
+          const z = band.z0 + Math.random()*(band.z1-band.z0);
+
+          // keep main cross roads near center clearer
+          if (Math.abs(x) < 22 || Math.abs(z) < 22) { continue; }
+
+          const w = 10 + Math.random()*18;
+          const d = 10 + Math.random()*18;
+          const h = 10 + Math.random()*28;
+          blocks.push({ x, z, w, d, h, mat: (Math.random()<0.5?matA:matB) });
+        }
+      }
+
+      for (const b of blocks){
+        const m = new THREE.Mesh(new THREE.BoxGeometry(b.w, b.h, b.d), b.mat);
+        m.position.set(b.x, b.h/2, b.z);
+        m.castShadow = true;
+        m.receiveShadow = true;
+
+        const slab = new THREE.Mesh(new THREE.BoxGeometry(b.w*0.9, 1.4, b.d*0.9), b.mat);
+        slab.position.set(0, b.h/2 + 0.6, 0);
+        slab.rotation.z = (Math.random()*0.6 - 0.3);
+        slab.rotation.x = (Math.random()*0.5 - 0.2);
+        slab.castShadow = true;
+        m.add(slab);
+
+        const bite = new THREE.Mesh(
+          new THREE.BoxGeometry(b.w*0.35, b.h*0.55, b.d*0.35),
+          new THREE.MeshStandardMaterial({ color: 0x151a22, roughness: 1.0, metalness: 0.0 })
+        );
+        bite.position.set((Math.random()<0.5?1:-1)*b.w*0.28, b.h*0.15, (Math.random()<0.5?1:-1)*b.d*0.28);
+        bite.rotation.y = Math.random()*Math.PI;
+        bite.scale.y = 0.7;
+        m.add(bite);
+
+        g.add(m);
+      }
+
+      scene.add(g);
+      return g;
     }
-    addFieldRect(FIELDS.A);
-    addFieldRect(FIELDS.B);
-    addFieldRect(FIELDS.C);
+    addCityBlocks();
 
-    {
-      const f = FIELDS.D;
-      const shape = new THREE.Shape();
-      shape.moveTo(f.xL, f.zTop);
-      shape.lineTo(f.xR, f.zTop);
-      shape.lineTo(f.xL, f.zBot);
-      shape.closePath();
-      const geo = new THREE.ShapeGeometry(shape);
-      const tri = new THREE.Mesh(geo, fieldMat(0x124527));
-      tri.rotation.x = -Math.PI/2;
-      tri.position.y = 0.02;
-      tri.receiveShadow = true;
-      scene.add(tri);
+    // Rubble piles aligned near roads/buildings
+    function addRubblePiles(){
+      const rubble = new THREE.Group();
+      const mat = new THREE.MeshStandardMaterial({ color: 0x3a404c, roughness: 1.0, metalness: 0.04 });
 
-      const edges = new THREE.LineSegments(
-        new THREE.EdgesGeometry(geo),
-        new THREE.LineBasicMaterial({ color: 0xcbd5e1, transparent:true, opacity: 0.22 })
-      );
-      edges.rotation.x = -Math.PI/2;
-      edges.position.y = 0.03;
-      scene.add(edges);
+      const piles = [
+        { x:-55, z:-18, r:18 },
+        { x: 50, z: 22, r:16 },
+        { x:-30, z: 55, r:14 },
+        { x: 70, z:-60, r:18 },
+      ];
+
+      for (const p of piles){
+        const count = 80;
+        for (let i=0;i<count;i++){
+          const sx = 0.6 + Math.random()*2.8;
+          const sy = 0.3 + Math.random()*1.8;
+          const sz = 0.6 + Math.random()*2.8;
+          const geo = new THREE.BoxGeometry(sx, sy, sz);
+          const m = new THREE.Mesh(geo, mat);
+
+          const a = Math.random()*Math.PI*2;
+          const rad = Math.random()*p.r;
+          m.position.set(p.x + Math.cos(a)*rad, sy*0.5, p.z + Math.sin(a)*rad);
+
+          // keep center cross roads clearer
+          if (Math.abs(m.position.x) < 18 || Math.abs(m.position.z) < 18) { i--; continue; }
+
+          m.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+          m.castShadow = true;
+          m.receiveShadow = true;
+          rubble.add(m);
+        }
+      }
+
+      scene.add(rubble);
+      return rubble;
     }
+    addRubblePiles();
 
-    const BASE = new THREE.Vector3(-120, 0.0, 78);
+    // Smoke plumes
+    function makeSmokeTexture(){
+      const c = document.createElement("canvas");
+      c.width = 128; c.height = 128;
+      const g = c.getContext("2d");
+      const grd = g.createRadialGradient(64,64,4, 64,64,64);
+      grd.addColorStop(0, "rgba(255,255,255,0.45)");
+      grd.addColorStop(0.35, "rgba(255,255,255,0.16)");
+      grd.addColorStop(1, "rgba(255,255,255,0.0)");
+      g.fillStyle = grd;
+      g.fillRect(0,0,128,128);
+      const tex = new THREE.CanvasTexture(c);
+      tex.anisotropy = 4;
+      return tex;
+    }
+    const smokeTex = makeSmokeTexture();
+    function addSmokePlumes(){
+      const group = new THREE.Group();
+      const mat = new THREE.SpriteMaterial({ map: smokeTex, transparent:true, opacity: 0.22, depthWrite:false });
+      const plumes = [
+        { x:-55, z:-18 },
+        { x: 70, z:-60 },
+        { x:-30, z: 55 },
+      ];
+      for (const p of plumes){
+        for (let i=0;i<7;i++){
+          const s = new THREE.Sprite(mat.clone());
+          s.position.set(p.x + (Math.random()*10-5), 6 + i*4, p.z + (Math.random()*10-5));
+          const k = 10 + Math.random()*14;
+          s.scale.set(k, k, 1);
+          s.material.opacity = 0.10 + Math.random()*0.18;
+          group.add(s);
+        }
+      }
+      scene.add(group);
+      return group;
+    }
+    const smoke = addSmokePlumes();
+
+    // Base + marker
+    const BASE = new THREE.Vector3(-145, 0.0, 105);
     {
       const ring = new THREE.Mesh(
         new THREE.RingGeometry(2.8, 4.2, 44),
@@ -940,12 +998,13 @@ Join the shift from human-controlled drones to software-controlled fleets.
       return { group: g };
     }
 
-    function makeSprayCone() {
-      const geo = new THREE.ConeGeometry(5.8, 10.5, 18, 1, true);
-      const mat = new THREE.MeshBasicMaterial({ color: 0x60a5fa, transparent:true, opacity: 0.12, side: THREE.DoubleSide, depthWrite:false });
+    // SAR visuals
+    function makeScanCone() {
+      const geo = new THREE.ConeGeometry(6.8, 13.5, 20, 1, true);
+      const mat = new THREE.MeshBasicMaterial({ color: 0x60a5fa, transparent:true, opacity: 0.10, side: THREE.DoubleSide, depthWrite:false });
       const cone = new THREE.Mesh(geo, mat);
       cone.rotation.x = Math.PI;
-      cone.position.set(0, -7.0, 0);
+      cone.position.set(0, -8.5, 0);
       return cone;
     }
     function makePulseRing(colorHex) {
@@ -953,17 +1012,20 @@ Join the shift from human-controlled drones to software-controlled fleets.
       const mat = new THREE.MeshBasicMaterial({ color: colorHex, transparent:true, opacity: 0.0, side: THREE.DoubleSide, depthWrite:false });
       const ring = new THREE.Mesh(geo, mat);
       ring.rotation.x = -Math.PI/2;
-      ring.position.y = -6.6;
+      ring.position.y = -7.8;
       return ring;
     }
 
     function v(x, y, z) { return new THREE.Vector3(x, y, z); }
-    const ALT = 10;
+    const ALT = 14;
 
-    function genLawnmowerRect(f, rows=8) {
+    // =========================
+    // SAR PATHS (safe in-bounds)
+    // =========================
+    function genGridSweep(bounds, rows=10, inset=26) {
       const pts = [];
-      const x0 = f.x0 + 6, x1 = f.x1 - 6;
-      const z0 = f.z0 + 6, z1 = f.z1 - 6;
+      const x0 = bounds.x0 + inset, x1 = bounds.x1 - inset;
+      const z0 = bounds.z0 + inset, z1 = bounds.z1 - inset;
       for (let i = 0; i < rows; i++) {
         const t = rows === 1 ? 0 : i/(rows-1);
         const z = z1 - t*(z1-z0);
@@ -971,39 +1033,32 @@ Join the shift from human-controlled drones to software-controlled fleets.
         pts.push(v(lr ? x0 : x1, ALT, z));
         pts.push(v(lr ? x1 : x0, ALT, z));
       }
-      pts.push(v(pts[pts.length-1].x, ALT, z1));
-      pts.push(v(pts[0].x, ALT, z1));
-      pts.push(v(pts[0].x, ALT, pts[0].z));
+      pts.push(pts[0].clone());
       return pts;
     }
 
-    function genPerimeterRect(f, rounds=2) {
+    function genSpiral(bounds, turns=3, samples=240, inset=28) {
       const pts = [];
-      const x0 = f.x0 + 7, x1 = f.x1 - 7;
-      const z0 = f.z0 + 7, z1 = f.z1 - 7;
-      for (let r=0; r<rounds; r++){
-        pts.push(v(x0, ALT, z1));
-        pts.push(v(x0, ALT, z0));
-        pts.push(v(x1, ALT, z0));
-        pts.push(v(x1, ALT, z1));
-        pts.push(v(x0, ALT, z1));
+      const cx = (bounds.x0 + bounds.x1) / 2;
+      const cz = (bounds.z0 + bounds.z1) / 2;
+      const rx = (bounds.x1 - bounds.x0)/2 - inset;
+      const rz = (bounds.z1 - bounds.z0)/2 - inset;
+      for (let i=0;i<=samples;i++){
+        const t = i / samples;
+        const a = t * Math.PI * 2 * turns;
+        const k = 1 - t; // inward
+        pts.push(v(
+          cx + Math.cos(a) * rx * k,
+          ALT,
+          cz + Math.sin(a) * rz * k
+        ));
       }
       return pts;
     }
 
-    function genCircleCenters(f) {
-      const x0 = f.x0 + 10, x1 = f.x1 - 10;
-      const z0 = f.z0 + 10, z1 = f.z1 - 10;
-      return [
-        v(x0 + (x1-x0)*0.30, ALT, z0 + (z1-z0)*0.30),
-        v(x0 + (x1-x0)*0.72, ALT, z0 + (z1-z0)*0.52),
-        v(x0 + (x1-x0)*0.45, ALT, z0 + (z1-z0)*0.74),
-      ];
-    }
-
-    function genCircleLoops(centers, radius=9, segments=28) {
+    function genHotspotLoops(hotspots, radius=10, segments=34) {
       const pts = [];
-      for (const c of centers) {
+      for (const c of hotspots){
         for (let i=0;i<=segments;i++){
           const a = (i/segments) * Math.PI*2;
           pts.push(v(c.x + Math.cos(a)*radius, ALT, c.z + Math.sin(a)*radius));
@@ -1013,56 +1068,42 @@ Join the shift from human-controlled drones to software-controlled fleets.
       return pts;
     }
 
-    function genTriSweep(tri, rows=9) {
-      const pts = [];
-      const xL = tri.xL + 6;
-      const xR = tri.xR - 6;
-      const zT = tri.zTop + 6;
-      const zB = tri.zBot - 6;
-      for (let i=0;i<rows;i++){
-        const t = rows===1?0:i/(rows-1);
-        const z = zB - t*(zB-zT);
-        const frac = (tri.zBot - z) / Math.max(1, (tri.zBot - tri.zTop));
-        const xDiag = tri.xL + frac*(tri.xR - tri.xL);
-        const xMax = Math.min(xR, xDiag - 6);
-        const lr = (i%2===0);
-        pts.push(v(lr ? xL : xMax, ALT, z));
-        pts.push(v(lr ? xMax : xL, ALT, z));
-      }
-      pts.push(v(xL, ALT, zB));
-      pts.push(pts[0].clone());
-      return pts;
-    }
-
     function genTransit(from, to, laneZ) {
-      const zLane = THREE.MathUtils.clamp(laneZ, -90, 90);
+      const zLane = THREE.MathUtils.clamp(laneZ, -140, 140);
       const dx = to.x - from.x;
       const s = Math.sign(dx || 1);
-      const x1 = THREE.MathUtils.clamp(from.x + s*18, -130, 130);
-      const x2 = THREE.MathUtils.clamp(to.x - s*18, -130, 130);
+      const x1 = THREE.MathUtils.clamp(from.x + s*26, -180, 180);
+      const x2 = THREE.MathUtils.clamp(to.x - s*26, -180, 180);
       return [ v(from.x, ALT, from.z), v(x1, ALT, zLane), v(x2, ALT, zLane), v(to.x, ALT, to.z) ];
     }
 
-    const core1 = genTriSweep({ xL: FIELDS.D.xL, xR: FIELDS.D.xR, zTop: FIELDS.D.zTop, zBot: FIELDS.D.zBot }, 10);
-    const core2 = genCircleLoops(genCircleCenters(FIELDS.C), 9, 28);
-    const core3 = genPerimeterRect(FIELDS.B, 3);
-    const core4 = genLawnmowerRect(FIELDS.A, 9);
+    const HOTSPOTS = [
+      v(-55, ALT, -18),
+      v( 70, ALT, -60),
+      v(-30, ALT,  55),
+    ];
+
+    const core1 = genGridSweep(ZONE, 11, 26);                 // grid search
+    const core2 = genHotspotLoops(HOTSPOTS, 12, 38);          // thermal loops
+    const core3 = genSpiral(ZONE, 3.2, 240, 28);              // mapping spiral
+    const core4 = genHotspotLoops([HOTSPOTS[1]], 8, 36);      // confirm hotspot
 
     const entry1 = core1[0], entry2 = core2[0], entry3 = core3[0], entry4 = core4[0];
-    const t1 = genTransit(BASE, entry1, 55);
-    const t2 = genTransit(BASE, entry2, 40);
-    const t3 = genTransit(BASE, entry3, 25);
-    const t4 = genTransit(BASE, entry4, 10);
+    const t1 = genTransit(BASE, entry1, 85);
+    const t2 = genTransit(BASE, entry2, 70);
+    const t3 = genTransit(BASE, entry3, 55);
+    const t4 = genTransit(BASE, entry4, 40);
 
+    // IMPORTANT: centripetal prevents overshoot
     const curves = {
-      d1: { transit: new THREE.CatmullRomCurve3(t1, false, "catmullrom", 0.0), core: new THREE.CatmullRomCurve3(core1, true, "catmullrom", 0.0) },
-      d2: { transit: new THREE.CatmullRomCurve3(t2, false, "catmullrom", 0.0), core: new THREE.CatmullRomCurve3(core2, true, "catmullrom", 0.0) },
-      d3: { transit: new THREE.CatmullRomCurve3(t3, false, "catmullrom", 0.0), core: new THREE.CatmullRomCurve3(core3, true, "catmullrom", 0.0) },
-      d4: { transit: new THREE.CatmullRomCurve3(t4, false, "catmullrom", 0.0), core: new THREE.CatmullRomCurve3(core4, true, "catmullrom", 0.0) },
+      d1: { transit: new THREE.CatmullRomCurve3(t1, false, "centripetal", 0.0), core: new THREE.CatmullRomCurve3(core1, true, "centripetal", 0.0) },
+      d2: { transit: new THREE.CatmullRomCurve3(t2, false, "centripetal", 0.0), core: new THREE.CatmullRomCurve3(core2, true, "centripetal", 0.0) },
+      d3: { transit: new THREE.CatmullRomCurve3(t3, false, "centripetal", 0.0), core: new THREE.CatmullRomCurve3(core3, false, "centripetal", 0.0) },
+      d4: { transit: new THREE.CatmullRomCurve3(t4, false, "centripetal", 0.0), core: new THREE.CatmullRomCurve3(core4, true, "centripetal", 0.0) },
     };
 
-    function addPathLine(curve, colorHex, opacity=0.18) {
-      const pts = curve.getPoints(180);
+    function addPathLine(curve, colorHex, opacity=0.12) {
+      const pts = curve.getPoints(220);
       const geo = new THREE.BufferGeometry().setFromPoints(pts);
       const mat = new THREE.LineDashedMaterial({ color: colorHex, transparent:true, opacity, dashSize: 3, gapSize: 4 });
       const line = new THREE.Line(geo, mat);
@@ -1071,7 +1112,7 @@ Join the shift from human-controlled drones to software-controlled fleets.
       scene.add(line);
     }
     addPathLine(curves.d1.core, 0xcbd5e1, 0.10);
-    addPathLine(curves.d2.core, 0xcbd5e1, 0.10);
+    addPathLine(curves.d2.core, 0xcbd5e1, 0.08);
     addPathLine(curves.d3.core, 0xcbd5e1, 0.08);
     addPathLine(curves.d4.core, 0xcbd5e1, 0.10);
 
@@ -1081,13 +1122,13 @@ Join the shift from human-controlled drones to software-controlled fleets.
     const drone4 = makeDrone(0x7c3aed);
     scene.add(drone1.group, drone2.group, drone3.group, drone4.group);
 
-    drone1.group.add(makeSprayCone());
-    const photoRing = makePulseRing(0xe2e8f0);
-    drone2.group.add(photoRing);
-    const scanRing = makePulseRing(0xf59e0b);
-    drone3.group.add(scanRing);
-    const gridRing = makePulseRing(0x7c3aed);
-    drone4.group.add(gridRing);
+    drone1.group.add(makeScanCone());
+    const thermalRing = makePulseRing(0xe2e8f0);
+    drone2.group.add(thermalRing);
+    const mapRing = makePulseRing(0xf59e0b);
+    drone3.group.add(mapRing);
+    const confirmRing = makePulseRing(0x7c3aed);
+    drone4.group.add(confirmRing);
 
     const startPos = v(BASE.x, 1.0, BASE.z);
     [drone1,drone2,drone3,drone4].forEach((d, i) => {
@@ -1114,28 +1155,7 @@ Join the shift from human-controlled drones to software-controlled fleets.
       label.el.classList.toggle("hide", !visible);
     }
 
-    function distanceAlongWithStops(tSec, speed, moveLen, stopCount, dwellSec) {
-      const moveTime = moveLen / speed;
-      const cycleTime = moveTime + stopCount * dwellSec;
-      let t = ((tSec % cycleTime) + cycleTime) % cycleTime;
-
-      for (let i = 0; i <= stopCount; i++) {
-        const nextD = (i === stopCount) ? moveLen : (i / stopCount) * moveLen;
-        const prevD = (i === 0) ? 0 : ((i - 1) / stopCount) * moveLen;
-        const segD = nextD - prevD;
-        const segT = segD / speed;
-        if (t < segT) return { dist: prevD + t * speed, paused: false };
-        t -= segT;
-        if (i < stopCount) {
-          if (t < dwellSec) return { dist: nextD, paused: true };
-          t -= dwellSec;
-        }
-      }
-      return { dist: 0, paused: false };
-    }
-
     const clock = new THREE.Clock();
-    const PHOTO = { dwell: 0.85 };
     const state = { takeoffSec: 1.0 };
 
     function setSize() {
@@ -1148,11 +1168,28 @@ Join the shift from human-controlled drones to software-controlled fleets.
     window.addEventListener("resize", setSize);
     setSize();
 
+    function pulse(ring, t, base=0.05, amp=0.12, speed=8){
+      const k = (Math.sin(t * speed) * 0.5 + 0.5);
+      ring.scale.setScalar(0.9 + k * 2.4);
+      ring.material.opacity = base + k * amp;
+    }
+
+    // Hard clamp so drones never go outside map edges
+    function clampToZone(p, pad=7){
+      p.x = THREE.MathUtils.clamp(p.x, ZONE.x0 + pad, ZONE.x1 - pad);
+      p.z = THREE.MathUtils.clamp(p.z, ZONE.z0 + pad, ZONE.z1 - pad);
+      return p;
+    }
+
     function placeAlong(droneRig, curve, u, heightJitter=0.0) {
       const p = curve.getPointAt(u);
       const t = curve.getTangentAt(u);
+
+      clampToZone(p, 7);
+
       droneRig.group.position.copy(p);
       droneRig.group.position.y = ALT + heightJitter;
+
       const yaw = Math.atan2(t.x, t.z);
       droneRig.group.rotation.set(0, yaw, 0);
     }
@@ -1161,70 +1198,85 @@ Join the shift from human-controlled drones to software-controlled fleets.
       clock.getDelta();
       const t = clock.elapsedTime;
 
+      // smoke drift
+      if (smoke) {
+        smoke.children.forEach((s, i) => {
+          s.position.y += 0.004 + (i%3)*0.001;
+          s.material.opacity = 0.10 + (Math.sin(t*0.7 + i)*0.04);
+          s.position.x += Math.sin(t*0.12 + i) * 0.003;
+          s.position.z += Math.cos(t*0.10 + i) * 0.003;
+        });
+      }
+
       const takeoff = Math.min(1, t / state.takeoffSec);
       const lift = 1.0 + (ALT - 1.0) * (1 - Math.pow(1 - takeoff, 3));
 
+      // Drone 1: continuous grid search
       {
         const transitDur = 2.2;
         if (t < transitDur) {
-          placeAlong(drone1, curves.d1.transit, t / transitDur, 0.4*Math.sin(t*4));
+          placeAlong(drone1, curves.d1.transit, t / transitDur, 0.35*Math.sin(t*4));
           drone1.group.position.y = lift;
+          $("s1").textContent = "Deploying";
         } else {
-          const u = ((t - transitDur) * 0.030) % 1;
-          placeAlong(drone1, curves.d1.core, u, 0.25*Math.sin(t*3.3));
+          const u = ((t - transitDur) * 0.020) % 1;
+          placeAlong(drone1, curves.d1.core, u, 0.22*Math.sin(t*3.3));
+          $("s1").textContent = "Searching";
         }
       }
 
+      // Drone 2: thermal spotter (pulses on detection windows)
       {
         const transitDur = 2.4;
-        const speed = 22;
         if (t < transitDur) {
-          placeAlong(drone2, curves.d2.transit, t / transitDur, 0.35*Math.sin(t*4.2));
+          placeAlong(drone2, curves.d2.transit, t / transitDur, 0.30*Math.sin(t*4.2));
           drone2.group.position.y = lift;
-          photoRing.material.opacity = 0;
+          thermalRing.material.opacity = 0;
+          $("s2").textContent = "Deploying";
         } else {
-          const loopLen = curves.d2.core.getLength();
-          const stopCount = 3;
-          const out = distanceAlongWithStops(t - transitDur, speed, loopLen, stopCount, PHOTO.dwell);
-          const u = THREE.MathUtils.clamp(out.dist / loopLen, 0, 1);
-          placeAlong(drone2, curves.d2.core, u, 0.25*Math.sin(t*4.0));
-          if (out.paused) {
-            const k = (Math.sin(t * 9.0) * 0.5 + 0.5);
-            photoRing.scale.setScalar(0.9 + k * 2.2);
-            photoRing.material.opacity = 0.18 + k * 0.12;
+          const u = ((t - transitDur) * 0.030) % 1;
+          placeAlong(drone2, curves.d2.core, u, 0.18*Math.sin(t*4.0));
+          const detecting = (Math.sin(t*0.9) > 0.72);
+          if (detecting) {
+            pulse(thermalRing, t, 0.12, 0.12, 10);
+            $("s2").textContent = "Potential heat signature";
           } else {
-            photoRing.material.opacity = 0.0;
+            thermalRing.material.opacity = 0.0;
+            $("s2").textContent = "Scanning";
           }
-          $("s2").textContent = out.paused ? "Capturing photo" : "Executing";
         }
       }
 
+      // Drone 3: mapping spiral (ends at "Map complete")
       {
         const transitDur = 2.1;
         if (t < transitDur) {
-          placeAlong(drone3, curves.d3.transit, t / transitDur, 0.35*Math.sin(t*3.8));
+          placeAlong(drone3, curves.d3.transit, t / transitDur, 0.28*Math.sin(t*3.8));
           drone3.group.position.y = lift;
+          $("s3").textContent = "Deploying";
         } else {
-          const u = ((t - transitDur) * 0.024) % 1;
-          placeAlong(drone3, curves.d3.core, u, 0.20*Math.sin(t*3.0));
+          const u = THREE.MathUtils.clamp((t - transitDur) * 0.010, 0, 1);
+          placeAlong(drone3, curves.d3.core, u, 0.14*Math.sin(t*3.0));
+          pulse(mapRing, t, 0.03, 0.10, 4.5);
+          $("s3").textContent = (u > 0.98) ? "Map complete" : "Mapping";
         }
-        const k = (Math.sin(t*2.2) * 0.5 + 0.5);
-        scanRing.scale.setScalar(0.8 + k*3.0);
-        scanRing.material.opacity = 0.04 + k * 0.10;
       }
 
+      // Drone 4: confirm / approach
       {
         const transitDur = 2.0;
         if (t < transitDur) {
-          placeAlong(drone4, curves.d4.transit, t / transitDur, 0.35*Math.sin(t*3.9));
+          placeAlong(drone4, curves.d4.transit, t / transitDur, 0.28*Math.sin(t*3.9));
           drone4.group.position.y = lift;
+          confirmRing.material.opacity = 0;
+          $("s4").textContent = "Deploying";
         } else {
-          const u = ((t - transitDur) * 0.028) % 1;
-          placeAlong(drone4, curves.d4.core, u, 0.20*Math.sin(t*3.2));
+          const u = ((t - transitDur) * 0.040) % 1;
+          placeAlong(drone4, curves.d4.core, u, 0.12*Math.sin(t*3.2));
+          pulse(confirmRing, t, 0.06, 0.12, 7.0);
+          const verifying = (Math.sin(t*1.1) > 0.65);
+          $("s4").textContent = verifying ? "Verifying target" : "Holding pattern";
         }
-        const k = (Math.sin(t*1.8) * 0.5 + 0.5);
-        gridRing.scale.setScalar(0.9 + k*2.6);
-        gridRing.material.opacity = 0.03 + k * 0.08;
       }
 
       renderer.render(scene, camera);
