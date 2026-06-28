@@ -1,31 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="no-js">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Degla</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-    iframe {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      border: none;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="robots" content="noai, noimageai" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Degla — Autonomous Aerial Intelligence</title>
+<meta name="description" content="Coordinate an entire drone mission with one request. Plan, deploy, and adapt autonomous drone fleets in seconds — built for search and rescue, emergency response, and critical field operations." />
+<meta property="og:title" content="Degla — Autonomous Aerial Intelligence" />
+<meta property="og:description" content="Coordinate an entire drone mission with one request. Plan, deploy, and adapt autonomous drone fleets in seconds — built for search and rescue, emergency response, and critical field operations." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://YOUR-DOMAIN.com/" />
+<meta property="og:image" content="https://YOUR-DOMAIN.com/img/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Degla — autonomous aerial intelligence" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Degla — Autonomous Aerial Intelligence" />
+<meta name="twitter:description" content="Coordinate an entire drone mission with one request. Plan, deploy, and adapt autonomous drone fleets in seconds — built for search and rescue, emergency response, and critical field operations." />
+<meta name="twitter:image" content="https://YOUR-DOMAIN.com/img/og-image.jpg" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" as="font" type="font/woff2" href="fonts/geist.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="fonts/geist-mono.woff2" crossorigin />
+<script>document.documentElement.classList.remove('no-js')</script>
+<link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <iframe
-    src="https://degla-v2.vercel.app/v2/"
-    title="Degla — Autonomous Aerial Intelligence"
-    allowfullscreen>
-  </iframe>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav-wrap" id="nav">
+  <nav class="pill" aria-label="Primary">
+    <a class="nav-brand" href="#top" aria-label="Degla home">
+      <svg class="brand-logo" viewBox="196 508 687 56" fill="currentColor" aria-hidden="true">
+        <path d="M261.734 535.5C261.734 530.217 258.463 525.195 252.564 521.354C246.682 517.523 238.499 515.115 229.652 515.115H202.266V555.885H229.652C238.499 555.885 246.682 553.477 252.564 549.646C258.463 545.805 261.734 540.783 261.734 535.5ZM268 535.5C268 543.467 263.054 550.167 256.041 554.734C249.012 559.311 239.587 562 229.652 562H196V509H229.652C239.587 509 249.012 511.689 256.041 516.266C263.054 520.833 268 527.533 268 535.5Z"/>
+        <path d="M389 508V514.231H341.177V555.769H389V562H335V508H389Z"/>
+        <path d="M384 531V538H339V531H384Z"/>
+        <path d="M456 535C456 526.714 459.713 519.85 465.86 515.137C471.942 510.474 480.274 508 489.586 508C504.684 508 515.112 514.239 521.564 525.106L516.182 528.278C510.92 519.415 502.603 514.231 489.586 514.231C481.324 514.231 474.427 516.43 469.673 520.075C464.984 523.67 462.254 528.747 462.254 535C462.254 541.253 464.984 546.33 469.673 549.925C474.427 553.57 481.324 555.769 489.586 555.769C498.028 555.769 504.735 554.139 509.215 551.472C513.413 548.973 515.56 545.663 515.733 541.75H500.129V535.519H522V541.231C522 547.995 518.291 553.329 512.423 556.821C506.653 560.256 498.715 562 489.586 562C480.274 562 471.942 559.526 465.86 554.863C459.713 550.15 456 543.286 456 535Z"/>
+        <path d="M595.214 512V556.755H641V563H589V512H595.214Z"/>
+        <path d="M775 560.734L769.657 564L741.5 521.357L713.343 564L708 560.734L741.5 510L775 560.734Z"/>
+        <path d="M855.248 553V534.55H864.704C865.626 534.55 866.549 534.775 867.471 535.225C868.411 535.658 869.188 536.325 869.803 537.225C870.435 538.108 870.751 539.208 870.751 540.525C870.751 541.858 870.427 542.992 869.777 543.925C869.128 544.858 868.317 545.567 867.343 546.05C866.369 546.533 865.396 546.775 864.422 546.775H857.708V543.6H863.243C863.858 543.6 864.465 543.342 865.063 542.825C865.678 542.308 865.985 541.542 865.985 540.525C865.985 539.458 865.678 538.725 865.063 538.325C864.465 537.925 863.884 537.725 863.32 537.725H859.656V553H855.248ZM866.882 544.35L871.469 553H866.626L862.218 544.35H866.882ZM862.5 564C859.664 564 857.008 563.483 854.531 562.45C852.054 561.417 849.875 559.983 847.996 558.15C846.117 556.317 844.648 554.192 843.589 551.775C842.53 549.358 842 546.767 842 544C842 541.233 842.53 538.642 843.589 536.225C844.648 533.808 846.117 531.683 847.996 529.85C849.875 528.017 852.054 526.583 854.531 525.55C857.008 524.517 859.664 524 862.5 524C865.336 524 867.992 524.517 870.469 525.55C872.946 526.583 875.125 528.017 877.004 529.85C878.883 531.683 880.352 533.808 881.411 536.225C882.47 538.642 883 541.233 883 544C883 546.767 882.47 549.358 881.411 551.775C880.352 554.192 878.883 556.317 877.004 558.15C875.125 559.983 872.946 561.417 870.469 562.45C867.992 563.483 865.336 564 862.5 564ZM862.5 559.05C865.336 559.05 867.915 558.375 870.239 557.025C872.579 555.658 874.441 553.842 875.825 551.575C877.209 549.292 877.901 546.767 877.901 544C877.901 541.233 877.209 538.717 875.825 536.45C874.441 534.167 872.579 532.35 870.239 531C867.915 529.633 865.336 528.95 862.5 528.95C859.664 528.95 857.076 529.633 854.736 531C852.395 532.35 850.533 534.167 849.149 536.45C847.766 538.717 847.074 541.233 847.074 544C847.074 546.767 847.766 549.292 849.149 551.575C850.533 553.842 852.395 555.658 854.736 557.025C857.076 558.375 859.664 559.05 862.5 559.05Z"/>
+      </svg>
+    </a>
+    <a class="nav-mark" href="#top" aria-label="Degla home">
+      <img src="img/logo-drone.png" alt="Degla" aria-hidden="true">
+    </a>
+    <div class="nav-right">
+      <button class="nav-plus" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 3.4v11.2M3.4 9h11.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-menu" id="navMenu" data-open="false">
+    <div class="nav-panel-pills">
+      <a href="#what"><span class="bk">(</span>&nbsp;Mission&nbsp;<span class="bk">)</span></a>
+      <a href="#features"><span class="bk">(</span>&nbsp;Process&nbsp;<span class="bk">)</span></a>
+      <a href="#contact"><span class="bk">(</span>&nbsp;Contact&nbsp;<span class="bk">)</span></a>
+    </div>
+    <div class="nav-panel-foot">
+      <div class="nav-socials">
+        <a href="https://x.com/degla" target="_blank" rel="noopener"><span class="bk">(</span>&nbsp;X&nbsp;<span class="bk">)</span></a>
+        <a href="https://www.linkedin.com/company/degla" target="_blank" rel="noopener"><span class="bk">(</span>&nbsp;LinkedIn&nbsp;<span class="bk">)</span></a>
+      </div>
+      <div class="nav-panel-meta">
+        <span class="nav-copy"><span class="brand">Degla</span> — 2026</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO (video) ============ -->
+  <section class="hero" id="hero">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-hidden="true">
+      <source src="video/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-grade" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-grain" aria-hidden="true"></div>
+
+    <!-- Explore Degla pill removed for now (CSS .hero-pill retained for easy restore) -->
+
+    <!-- Trust strip: backers + intended users (official YC mark) -->
+    <div class="hero-trust" data-reveal>
+      <span class="yc-badge">
+        <svg class="yc-mark" viewBox="0 0 256 256" aria-hidden="true">
+          <rect width="256" height="256" rx="40" fill="#FB651E"/>
+          <path d="M119.373653,144.745813 L75.43296,62.4315733 L95.5144533,62.4315733 L121.36192,114.52416 C121.759575,115.452022 122.2235,116.413008 122.753707,117.407147 C123.283914,118.401285 123.747838,119.428546 124.145493,120.48896 C124.410597,120.886615 124.609422,121.251127 124.741973,121.582507 C124.874525,121.913886 125.007075,122.212123 125.139627,122.477227 C125.802386,123.802744 126.39886,125.095105 126.929067,126.354347 C127.459274,127.613589 127.923198,128.773399 128.320853,129.833813 C129.381268,127.580433 130.541078,125.1614 131.80032,122.57664 C133.059562,119.99188 134.351922,117.307747 135.67744,114.52416 L161.92256,62.4315733 L180.612267,62.4315733 L136.27392,145.739947 L136.27392,198.826667 L119.373653,198.826667 L119.373653,144.745813 Z" fill="#FFFFFF"/>
+        </svg>
+        <span>Backed by <b>Y&nbsp;Combinator</b></span>
+      </span>
+    </div>
+
+  </section>
+
+  <!-- ============ INTRO STATEMENT ============ -->
+  <section class="section intro" id="what">
+    <div class="shell intro-hero">
+      <h1 class="h-display h-hero intro-head" data-reveal>Coordinate Entire Drone Missions With Natural Language</h1>
+      <p class="intro-lead" data-reveal>Plan, deploy, and adapt autonomous drone fleets in seconds</p>
+      <p class="intro-builtfor" data-reveal><b>Built for</b> search and rescue, emergency response, infrastructure inspection, and critical field operations.</p>
+      <a href="#contact" class="bracket-cta intro-cta" data-reveal><span class="bk">(</span>&nbsp;Request early access&nbsp;<span class="bk">)</span></a>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS — centered single-column workflow ============ -->
+  <section class="howsteps" id="features" aria-label="How it works">
+    <div class="shell">
+      <div class="hw-head" data-reveal>
+        <span class="eyebrow"><span class="bx">(</span>&nbsp;Our process&nbsp;<span class="bx">)</span></span>
+        <h2 class="h-display h-lg hw-title">A mission in<br>3 steps.</h2>
+        <p class="hw-sub">From a single request to a fully coordinated operation.</p>
+        <p class="hw-ready">Ready in seconds.</p>
+      </div>
+      <!-- each step stacks vertically: the visual card on top, a centered caption below -->
+      <div class="fs-grid">
+        <div class="fs-step">
+          <span class="fs-badge" data-reveal>1</span>
+          <div class="fs-cap" data-reveal>
+            <h3 class="fs-title">State the goal</h3>
+            <p class="fs-desc">Tell <span class="brand">Degla</span> what needs to happen.</p>
+            <p class="fs-nots">No flight plans.<br>No waypoints.<br>No specialist training.</p>
+            <p class="fs-close">Just describe the objective</p>
+          </div>
+          <article class="fs-card is-active" id="step-0">
+            <div class="viz viz--rec">
+              <div class="orb-stage" id="orbStage">
+                <iframe class="orb-frame" src="orb/orb.html" title="Voice orb" scrolling="no" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
+                <button class="orb-hit" id="orbHit" type="button" aria-label="Play the script"></button>
+                <button class="orb-cta" type="button" tabindex="-1"><span class="bk">(</span>&nbsp;Click to plan a mission&nbsp;<span class="bk">)</span></button>
+                <div class="orb-transcript" id="orbTranscript" aria-live="polite"><span class="orb-mic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8.5" y1="22" x2="15.5" y2="22"/></svg></span><span class="orb-transcript-text" id="orbTranscriptText"></span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="fs-step">
+          <span class="fs-badge" data-reveal>2</span>
+          <div class="fs-cap" data-reveal>
+            <h3 class="fs-title">DEGLA builds the operation automatically.</h3>
+            <p class="fs-desc">It assigns aircraft, defines coverage, coordinates movement, and prepares for changing conditions.</p>
+            <p class="fs-close">All before takeoff.</p>
+          </div>
+          <article class="fs-card" id="step-1">
+            <div class="viz viz--ide">
+              <div class="ide" id="ideWin">
+
+                <!-- LEFT · mission-planning agent chat -->
+                <div class="ide__chat">
+                  <div class="ide__head">
+                    <span class="ide__mark"><svg viewBox="0 0 480 214" fill="currentColor" aria-hidden="true"><path d="M232 79 C 162 50 74 45 24 50 C 70 63 150 79 226 89 Z"/><path d="M248 79 C 318 50 406 45 456 50 C 410 63 330 79 254 89 Z"/><path d="M229 92 C 176 84 116 85 72 92 C 120 100 180 101 227 99 Z"/><path d="M251 92 C 304 84 364 85 408 92 C 360 100 300 101 253 99 Z"/><path d="M214 88 L230 71 L250 71 L266 88 L250 105 L230 105 Z"/><path d="M235 104 L245 104 L245 113 L235 113 Z"/><path fill-rule="evenodd" d="M240 111 L277 151 L240 197 L203 151 Z M240 129 L262 151 L240 179 L218 151 Z"/><path d="M221 143 L240 169 L259 143 L251 143 L240 158 L229 143 Z"/></svg></span>
+                    <span class="ide__crumb">Plan<span class="ide__dim">&#8201;/&#8201;</span>Sector&nbsp;7</span>
+                  </div>
+                  <div class="ide__thread" id="ideThread">
+                    <div class="ag ag-user">Search the W&nbsp;54th Street collapse in Hell&rsquo;s Kitchen for survivors and coordinate the ground teams.</div>
+                    <div class="ag ag-step">Reading <b>midtown-west.geojson</b></div>
+                    <div class="ag ag-step">Searching coverage patterns</div>
+                    <div class="ag ag-file"><span class="ag-file__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h7M4 12h11M4 17h6"/><circle cx="18" cy="8.5" r="1.8"/></svg></span>tasking order<span class="ag-file__add">4 drones</span></div>
+                    <div class="ag ag-text">Tasking <b>4&nbsp;drones</b> across <b>Midtown&nbsp;West</b> &mdash; <b>Alpha</b> sweeps the blocks, <b>Bravo</b> runs thermal over the W&nbsp;54th collapse, <b>Charlie</b> maps W&nbsp;53rd&ndash;55th, <b>Delta</b> on standby &mdash; launching now.</div>
+                    <div class="ag ag-step ag-step--think"><span class="ag-dots"><i></i><i></i><i></i></span>Monitoring<span class="ag-dim">&nbsp;&middot; adapting in real time</span></div>
+                  </div>
+                  <div class="ide__composer">
+                    <div class="cc" aria-hidden="true">
+                      <div class="cc__field"><span class="cc__type" id="ccType">Reroute Bravo to the 10th Ave face</span><span class="cc__wcur"></span></div>
+                      <div class="cc__row">
+                        <span class="cc__model">Degla&nbsp;2.5<svg class="cc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+                        <span class="cc__mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><path d="M12 18.5v3"/></svg></span>
+                        <span class="cc__send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- RIGHT · Degla’s code thinking -->
+                <div class="ide__fleet">
+                  <div class="fleet__head">
+                    <span class="fleet__title"><svg class="fleet__mark" viewBox="0 0 480 214" fill="currentColor" aria-hidden="true"><path d="M232 79 C 162 50 74 45 24 50 C 70 63 150 79 226 89 Z"/><path d="M248 79 C 318 50 406 45 456 50 C 410 63 330 79 254 89 Z"/><path d="M229 92 C 176 84 116 85 72 92 C 120 100 180 101 227 99 Z"/><path d="M251 92 C 304 84 364 85 408 92 C 360 100 300 101 253 99 Z"/><path d="M214 88 L230 71 L250 71 L266 88 L250 105 L230 105 Z"/><path d="M235 104 L245 104 L245 113 L235 113 Z"/><path fill-rule="evenodd" d="M240 111 L277 151 L240 197 L203 151 Z M240 129 L262 151 L240 179 L218 151 Z"/><path d="M221 143 L240 169 L259 143 L251 143 L240 158 L229 143 Z"/></svg>Fleet<span class="fleet__dim">&#8201;/&#8201;</span>Sector&nbsp;7</span>
+                    <span class="fleet__live"><span class="fleet__dot"></span>4 live</span>
+                  </div>
+                  <div class="fleet__body" id="fleetBody">
+                    <div class="dr dr--a">
+                      <div class="dr__head"><span class="dr__name">Alpha-1<span class="dr__role">&nbsp;&middot; Grid Sweep</span></span><span class="dr__badge"><span class="dr__bdot"></span><span class="dr__bt">Searching</span></span></div>
+                      <div class="dr__log"><div class="dr__roll">
+                        <p class="dl"><span class="dl__t">[00:15]</span>9th &amp; W52 &mdash; clear</p>
+                        <p class="dl"><span class="dl__t">[00:18]</span>82% block coverage</p>
+                        <p class="dl"><span class="dl__t">[00:20]</span>10th &amp; W55 &mdash; clear</p>
+                      </div></div>
+                    </div>
+                    <div class="dr dr--b">
+                      <div class="dr__head"><span class="dr__name">Bravo-2<span class="dr__role">&nbsp;&middot; Thermal Scout</span></span><span class="dr__badge"><span class="dr__bdot"></span><span class="dr__bt">Contact</span></span></div>
+                      <div class="dr__log"><div class="dr__roll">
+                        <p class="dl"><span class="dl__t">[00:12]</span>thermal 35.1&deg;C ambient</p>
+                        <p class="dl dl--key"><span class="dl__t">[00:21]</span><i class="dl__ic">&#10003;</i>survivor confirmed &middot; 9th &amp; W54</p>
+                        <p class="dl"><span class="dl__t">[00:24]</span>holding overwatch &middot; 9th &amp; W54</p>
+                      </div></div>
+                    </div>
+                    <div class="dr dr--c">
+                      <div class="dr__head"><span class="dr__name">Charlie-3<span class="dr__role">&nbsp;&middot; Recon</span></span><span class="dr__badge"><span class="dr__bdot"></span><span class="dr__bt">Complete</span></span></div>
+                      <div class="dr__log"><div class="dr__roll">
+                        <p class="dl"><span class="dl__t">[00:11]</span>mapping W53&ndash;55 blocks</p>
+                        <p class="dl dl--key"><span class="dl__t">[00:26]</span><i class="dl__ic">&#10003;</i>3D map &middot; Midtown West uploaded</p>
+                        <p class="dl"><span class="dl__t">[00:28]</span>coverage 100%</p>
+                      </div></div>
+                    </div>
+                    <div class="dr dr--d">
+                      <div class="dr__head"><span class="dr__name">Delta-4<span class="dr__role">&nbsp;&middot; Confirm</span></span><span class="dr__badge"><span class="dr__bdot"></span><span class="dr__bt">Confirmed</span></span></div>
+                      <div class="dr__log"><div class="dr__roll">
+                        <p class="dl"><span class="dl__t">[00:13]</span>&rarr; vectoring to 9th &amp; W54</p>
+                        <p class="dl dl--key"><span class="dl__t">[00:21]</span><i class="dl__ic">&#10003;</i>confirmed &middot; 1 survivor</p>
+                        <p class="dl"><span class="dl__t">[00:25]</span>relay active &mdash; guiding FDNY</p>
+                      </div></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="fs-step">
+          <span class="fs-badge" data-reveal>3</span>
+          <div class="fs-cap" data-reveal>
+            <h3 class="fs-title">The fleet flies and adapts</h3>
+            <p class="fs-desc">Once deployed, the mission continues to evolve.</p>
+            <p class="fs-desc"><span class="brand">Degla</span> responds to new information, changing conditions, and field updates in real time.</p>
+            <p class="fs-close">No manual coordination required.</p>
+          </div>
+          <article class="fs-card" id="step-2">
+            <div class="viz viz--fly">
+              <iframe class="fly-map" id="flyMap" data-src="map/map.html"
+                      title="Live drone mission map — 4 drones inbound on Sector 7"
+                      scrolling="no" loading="lazy" tabindex="-1"></iframe>
+              <div class="fly-fallback" aria-hidden="true"></div>
+              <!-- progressive blur rising from the card's bottom edge (stacked backdrop masks) -->
+              <div class="fly-blur" aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              <!-- full-width live console band; lines are typed in a rolling loop by main.js -->
+              <div class="plan-agent plan-agent--band">
+                <div class="pa-bar">
+                  <span class="pa-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 480 214" fill="currentColor"><path d="M232 79 C 162 50 74 45 24 50 C 70 63 150 79 226 89 Z"/><path d="M248 79 C 318 50 406 45 456 50 C 410 63 330 79 254 89 Z"/><path d="M229 92 C 176 84 116 85 72 92 C 120 100 180 101 227 99 Z"/><path d="M251 92 C 304 84 364 85 408 92 C 360 100 300 101 253 99 Z"/><path d="M214 88 L230 71 L250 71 L266 88 L250 105 L230 105 Z"/><path d="M235 104 L245 104 L245 113 L235 113 Z"/><path fill-rule="evenodd" d="M240 111 L277 151 L240 197 L203 151 Z M240 129 L262 151 L240 179 L218 151 Z"/><path d="M221 143 L240 169 L259 143 L251 143 L240 158 L229 143 Z"/></svg>
+                  </span>
+                  <span class="pa-name"><span class="brand">Degla</span> planner</span>
+                  <span class="pa-live" aria-hidden="true"><span class="pa-live-dot"></span>live</span>
+                </div>
+                <div class="plan-roll" id="planRoll" aria-live="polite"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ CONTACT — simple two-column form (Tailark grid-2 contact) ============ -->
+  <section class="section contact" id="contact" aria-label="Contact">
+    <div class="shell ct-grid">
+
+      <!-- left · heading + checklist -->
+      <div class="ct-info">
+        <h2 class="h-display h-lg ct-title" data-reveal>Request Early Access</h2>
+        <ul class="ct-list" data-reveal>
+          <li><span class="ct-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>See a live mission planned in seconds.</li>
+          <li><span class="ct-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Explore deployment options for your team.</li>
+          <li><span class="ct-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Work directly with us during onboarding.</li>
+        </ul>
+        <p class="ct-support" data-reveal>Already onboard? <a href="#">Talk to support</a></p>
+      </div>
+
+      <!-- right · form -->
+      <div class="ct-card" data-reveal>
+        <h3 class="ct-formhead">Tell us what you need</h3>
+        <form class="rq-form ct-form" id="contactForm" novalidate>
+          <div class="rq-field">
+            <label for="ctName">Name</label>
+            <input id="ctName" name="name" type="text" autocomplete="name" placeholder="Sam Rivera" required />
+          </div>
+
+          <div class="rq-field">
+            <label for="ctEmail">Email</label>
+            <input id="ctEmail" name="email" type="email" autocomplete="email" placeholder="you@agency.gov" required />
+          </div>
+
+          <div class="rq-field">
+            <label for="ctSize">Team size</label>
+            <div class="rq-select">
+              <select id="ctSize" name="size">
+                <option>1 to 19</option>
+                <option>20 to 49</option>
+                <option>50 to 199</option>
+                <option>200 to 999</option>
+                <option>1000+</option>
+              </select>
+              <svg class="rq-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+
+          <div class="rq-field">
+            <label for="ctMsg">Mission context</label>
+            <textarea id="ctMsg" name="message" rows="4" placeholder="Describe your mission, operational environment, and objectives." required></textarea>
+          </div>
+
+          <p class="rq-error" id="ctError" role="alert" aria-live="polite" hidden></p>
+
+          <div class="ct-foot">
+            <p class="ct-agree">Or email <a href="mailto:ceo@deglai.ai">ceo@deglai.ai</a></p>
+            <button type="submit" class="bracket-cta ct-submit"><span class="bk">(</span>&nbsp;Send request&nbsp;<span class="bk">)</span></button>
+          </div>
+        </form>
+
+        <div class="rq-success" id="ctSuccess" role="status" aria-live="polite" tabindex="-1" hidden>
+          <span class="rq-success-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <h3 class="h-display h-md">Request received.</h3>
+          <p class="rq-sub" id="ctSuccessMsg" style="margin:0">Thank you. We&rsquo;ll be in touch shortly.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER (electric blue, Ovyon) ============ -->
+  <footer class="footer footer--blue" id="access">
+    <div class="shell">
+      <div class="footer-top">
+        <svg class="footer-logo" viewBox="196 508 687 56" role="img" aria-label="Degla">
+          <g fill="currentColor">
+            <path d="M261.734 535.5C261.734 530.217 258.463 525.195 252.564 521.354C246.682 517.523 238.499 515.115 229.652 515.115H202.266V555.885H229.652C238.499 555.885 246.682 553.477 252.564 549.646C258.463 545.805 261.734 540.783 261.734 535.5ZM268 535.5C268 543.467 263.054 550.167 256.041 554.734C249.012 559.311 239.587 562 229.652 562H196V509H229.652C239.587 509 249.012 511.689 256.041 516.266C263.054 520.833 268 527.533 268 535.5Z"/>
+            <path d="M389 508V514.231H341.177V555.769H389V562H335V508H389Z"/>
+            <path d="M384 531V538H339V531H384Z"/>
+            <path d="M456 535C456 526.714 459.713 519.85 465.86 515.137C471.942 510.474 480.274 508 489.586 508C504.684 508 515.112 514.239 521.564 525.106L516.182 528.278C510.92 519.415 502.603 514.231 489.586 514.231C481.324 514.231 474.427 516.43 469.673 520.075C464.984 523.67 462.254 528.747 462.254 535C462.254 541.253 464.984 546.33 469.673 549.925C474.427 553.57 481.324 555.769 489.586 555.769C498.028 555.769 504.735 554.139 509.215 551.472C513.413 548.973 515.56 545.663 515.733 541.75H500.129V535.519H522V541.231C522 547.995 518.291 553.329 512.423 556.821C506.653 560.256 498.715 562 489.586 562C480.274 562 471.942 559.526 465.86 554.863C459.713 550.15 456 543.286 456 535Z"/>
+            <path d="M595.214 512V556.755H641V563H589V512H595.214Z"/>
+            <path d="M775 560.734L769.657 564L741.5 521.357L713.343 564L708 560.734L741.5 510L775 560.734Z"/>
+            <path d="M855.248 553V534.55H864.704C865.626 534.55 866.549 534.775 867.471 535.225C868.411 535.658 869.188 536.325 869.803 537.225C870.435 538.108 870.751 539.208 870.751 540.525C870.751 541.858 870.427 542.992 869.777 543.925C869.128 544.858 868.317 545.567 867.343 546.05C866.369 546.533 865.396 546.775 864.422 546.775H857.708V543.6H863.243C863.858 543.6 864.465 543.342 865.063 542.825C865.678 542.308 865.985 541.542 865.985 540.525C865.985 539.458 865.678 538.725 865.063 538.325C864.465 537.925 863.884 537.725 863.32 537.725H859.656V553H855.248ZM866.882 544.35L871.469 553H866.626L862.218 544.35H866.882ZM862.5 564C859.664 564 857.008 563.483 854.531 562.45C852.054 561.417 849.875 559.983 847.996 558.15C846.117 556.317 844.648 554.192 843.589 551.775C842.53 549.358 842 546.767 842 544C842 541.233 842.53 538.642 843.589 536.225C844.648 533.808 846.117 531.683 847.996 529.85C849.875 528.017 852.054 526.583 854.531 525.55C857.008 524.517 859.664 524 862.5 524C865.336 524 867.992 524.517 870.469 525.55C872.946 526.583 875.125 528.017 877.004 529.85C878.883 531.683 880.352 533.808 881.411 536.225C882.47 538.642 883 541.233 883 544C883 546.767 882.47 549.358 881.411 551.775C880.352 554.192 878.883 556.317 877.004 558.15C875.125 559.983 872.946 561.417 870.469 562.45C867.992 563.483 865.336 564 862.5 564ZM862.5 559.05C865.336 559.05 867.915 558.375 870.239 557.025C872.579 555.658 874.441 553.842 875.825 551.575C877.209 549.292 877.901 546.767 877.901 544C877.901 541.233 877.209 538.717 875.825 536.45C874.441 534.167 872.579 532.35 870.239 531C867.915 529.633 865.336 528.95 862.5 528.95C859.664 528.95 857.076 529.633 854.736 531C852.395 532.35 850.533 534.167 849.149 536.45C847.766 538.717 847.074 541.233 847.074 544C847.074 546.767 847.766 549.292 849.149 551.575C850.533 553.842 852.395 555.658 854.736 557.025C857.076 558.375 859.664 559.05 862.5 559.05Z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="footer-grid">
+        <div>
+          <h4>Navigation</h4>
+          <a href="#what"><span class="bk">(</span>&nbsp;Mission&nbsp;<span class="bk">)</span></a>
+          <a href="#features"><span class="bk">(</span>&nbsp;Process&nbsp;<span class="bk">)</span></a>
+          <a href="#contact"><span class="bk">(</span>&nbsp;Contact&nbsp;<span class="bk">)</span></a>
+        </div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:ceo@deglai.ai"><span class="bk">(</span>&nbsp;ceo@deglai.ai&nbsp;<span class="bk">)</span></a>
+        </div>
+        <div>
+          <h4>Social</h4>
+          <a href="#" rel="noopener"><span class="bk">(</span>&nbsp;X&nbsp;<span class="bk">)</span></a>
+          <a href="#" rel="noopener"><span class="bk">(</span>&nbsp;LinkedIn&nbsp;<span class="bk">)</span></a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="#"><span class="bk">(</span>&nbsp;Privacy&nbsp;<span class="bk">)</span></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="tag fb-degla">2026 <span class="brand">DEGLA</span></span>
+        <span class="tag fb-rights">All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ============ COOKIE NOTICE ============ -->
+<aside class="cookie" id="cookie" role="dialog" aria-label="Cookie notice" aria-hidden="true">
+  <h3 class="cookie-title">Cookies</h3>
+  <p class="cookie-text">This website collects cookies to keep the site fast and reliable and to analyze site traffic and performance. We never collect any personal data.</p>
+  <a href="#" class="cookie-custom" id="cookieCustomize">Customize Settings</a>
+  <div class="cookie-actions">
+    <button type="button" class="cookie-btn cookie-accept" id="cookieAccept"><span class="bk">(</span>&nbsp;Accept all&nbsp;<span class="bk">)</span></button>
+    <button type="button" class="cookie-btn cookie-reject" id="cookieReject"><span class="bk">(</span>&nbsp;Reject all&nbsp;<span class="bk">)</span></button>
+  </div>
+</aside>
+
+<div class="progressive-blur" aria-hidden="true">
+  <div class="blur-layer"></div>
+  <div class="blur-layer"></div>
+  <div class="blur-layer"></div>
+  <div class="blur-layer"></div>
+  <div class="blur-layer"></div>
+  <div class="blur-layer"></div>
+  <div class="blur-layer"></div>
+  <div class="blur-layer"></div>
+</div>
+
+<script src="js/main.js"></script>
+
 </body>
 </html>
