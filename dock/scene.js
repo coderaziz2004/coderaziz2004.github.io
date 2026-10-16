@@ -30,7 +30,7 @@ const pmrem=new T.PMREMGenerator(renderer);const envMap=pmrem.fromScene(env,.06)
 const floor=new T.Mesh(new T.PlaneGeometry(160,160),new T.MeshStandardMaterial({color:0x242a27,roughness:.72,metalness:.15}));floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
 const dock=window.DockModels.makeDock(),aircraft=window.DockModels.makeAircraft();scene.add(dock,aircraft);
 const phaseLabel=document.getElementById('phase'),play=document.getElementById('play'),replay=document.getElementById('replay'),scrub=document.getElementById('scrub');
-let time=0,paused=matchMedia('(prefers-reduced-motion: reduce)').matches,visible=true,last=null,lastStage=-1,lastLabel='',rendered=false;
+let time=0,paused=matchMedia('(prefers-reduced-motion: reduce)').matches,visible=false,last=null,lastStage=-1,lastLabel='',rendered=false;
 function button(){play.textContent=paused?'▶ Play':'Ⅱ Pause';play.setAttribute('aria-label',paused?'Play docking animation':'Pause docking animation');}
 play.addEventListener('click',()=>{paused=!paused;button();});replay.addEventListener('click',()=>{time=0;paused=false;button();});scrub.addEventListener('input',()=>{time=Number(scrub.value);paused=true;button();});button();
 window.addEventListener('message',e=>{if(e.source!==parent||e.origin!==location.origin||e.data?.type!=='degla-dock')return;visible=Boolean(e.data.active);last=null;});

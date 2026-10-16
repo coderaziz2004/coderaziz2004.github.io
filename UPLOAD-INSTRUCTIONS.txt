@@ -1,0 +1,46 @@
+DEGLA WEBSITE - READY FOR GITHUB PAGES
+
+The ZIP contains index.html at its top level, with all images, videos, scripts,
+fonts and 3D simulations. No install, build, API key or backend is required.
+The third photograph in section 05 has been replaced with IMG_5066.jpg.
+
+EASIEST: UPLOAD USING THE GITHUB WEBSITE
+1. Unzip Degla-Website.zip on your computer. Do not upload the ZIP itself.
+2. Open https://github.com/coderaziz2004/coderaziz2004.github.io
+3. Choose Add file > Upload files.
+4. Open the extracted folder. Drag ALL files and folders INSIDE it into GitHub.
+   index.html must be at the repository root, not inside a Degla-Website folder.
+5. Commit to main. New files replace matching paths. Existing unused files can
+   remain; the new index.html loads the packaged website.
+6. Keep the existing CNAME file and custom-domain setting.
+7. In Settings > Pages, use Deploy from a branch, main, /(root), then Save.
+8. Wait for the Pages deployment to succeed, then reload your existing domain.
+
+The archive has fewer than 100 files and each file is below GitHub's 25 MiB
+browser upload limit. Uploading a ZIP does not unpack it into a website.
+If a large browser upload fails, use the clean-replacement method below.
+
+CLEAN REPLACEMENT: REMOVE OLD CODE USING GITHUB DESKTOP
+1. Clone coderaziz2004/coderaziz2004.github.io in GitHub Desktop.
+2. Choose Repository > Show in Finder (Show in Explorer on Windows).
+3. In that cloned folder, remove the OLD website files and folders, but KEEP
+   CNAME and the hidden .git folder. Keep CNAME's original contents unchanged.
+   Do not delete the repository on GitHub.
+4. Copy every item from the extracted ZIP into that folder. index.html must sit
+   directly alongside CNAME, assets, dock, vendor and the JavaScript files.
+   Include .nojekyll if hidden files are visible; no build is needed.
+5. Return to GitHub Desktop, review the changes, commit with the message
+   'Replace website with new Degla experience', then click Push origin.
+6. Check Settings > Pages: main and /(root), with your current custom domain.
+
+Optional command-line commit, from the already-cloned repository after copying:
+  git add -A
+  git commit -m "Replace website with new Degla experience"
+  git push origin main
+
+Your original repo history remains available after a normal replacement commit.
+No changes to your external GitHub repository were made by preparing this ZIP.
+
+REFERENCE
+https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
