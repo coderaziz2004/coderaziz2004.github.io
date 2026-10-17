@@ -4,17 +4,4 @@
 
 .tier-aircraft-image{margin:28px 0 32px;background:#101c16;border:1px solid #c5d4b925;overflow:hidden;border-radius:4px}.tier-aircraft-image img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}.tiers-link{background:#182319;color:#e0ebd7}.header-actions{gap:8px}@media(max-width:600px){header{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:40px 44px;height:112px;padding:10px 14px;gap:7px 10px}header .logo{grid-column:1;grid-row:1;justify-self:start}header .header-actions{display:contents}header .header-actions .contact{grid-column:2;grid-row:1;justify-self:end;width:auto;min-height:38px;padding:8px 14px}header .header-actions .demo-footage-link{grid-column:1;grid-row:2}header .header-actions .tiers-link{grid-column:2;grid-row:2}header .header-actions .demo-footage-link,header .header-actions .tiers-link{width:100%;min-width:0;min-height:44px;padding:10px 6px;font-size:11px}.tier-aircraft-image{margin:22px 0 26px}html{scroll-padding-top:120px}}
 
-/* header-final */
-header .header-actions{margin-left:auto}
-.field-link{background:#182319;color:#e0ebd7}
-@media(max-width:760px){
-header{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:40px 48px;height:118px;padding:10px 14px;gap:8px}
-header .logo{grid-column:1/3;grid-row:1;justify-self:start}
-header .header-actions{display:contents}
-header .header-actions .contact{grid-column:3;grid-row:1;justify-self:end;width:auto;min-height:38px;padding:8px 12px}
-header .header-actions .demo-footage-link{grid-column:1;grid-row:2}
-header .header-actions .tiers-link{grid-column:2;grid-row:2}
-header .header-actions .field-link{grid-column:3;grid-row:2}
-header .header-actions .demo-footage-link,header .header-actions .tiers-link,header .header-actions .field-link{width:100%;height:48px;min-width:0;padding:6px;font-size:11px;line-height:1.3;white-space:normal;text-align:center}
-header .header-actions a span{display:none}
-}
+header .header-actions{margin-left:auto}.field-link{background:#182319;color:#e0ebd7}@media(max-width:760px){header{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:40px 48px;height:118px;padding:10px 14px;gap:8px}header .logo{grid-column:1 / 3;grid-row:1;justify-self:start}header .header-actions{display:contents}header .header-actions .contact{grid-column:3;grid-row:1;justify-self:end;width:auto;min-height:38px;padding:8px 12px}header .header-actions .demo-footage-link{grid-column:1;grid-row:2}header .header-actions .tiers-link{grid-column:2;grid-row:2}header .header-actions .field-link{grid-column:3;grid-row:2}header .header-actions .demo-footage-link,header .header-actions .tiers-link,header .header-actions .field-link{width:100%;height:48px;min-width:0;min-height:44px;padding:6px;font-size:11px;line-height:1.3;white-space:normal;text-align:center;gap:4px}header .header-actions a span{display:none}}
