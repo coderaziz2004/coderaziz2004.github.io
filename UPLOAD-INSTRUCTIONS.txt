@@ -1,1 +1,7 @@
-Extract into a new folder. Open index.html. Upload all extracted contents to the root of your GitHub repository, including pixel-textures.js. Keep your CNAME for your custom domain. Build: portable-pixels-2.
+TANIT TECHNOLOGIES WEBSITE
+
+Extract this ZIP first. Upload the extracted files and folders to the root of your existing website repository. index.html must be at the repository root. Do not upload the ZIP itself as the website.
+
+Preserve your existing CNAME file and GitHub Pages domain settings when replacing the website files. This package does not change your domain.
+
+The Contact buttons currently send to the existing sales@degla.ai mailbox. Change the mailto links in index.html when your new mailbox is ready.
